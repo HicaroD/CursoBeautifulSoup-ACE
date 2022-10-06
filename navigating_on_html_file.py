@@ -23,7 +23,7 @@ and they lived at the bottom of a well.</p>
 
 def main():
     soup = BeautifulSoup(html_doc, "html.parser")
-    print(soup.a)
+    print(soup.a) # Primeira tag "a" encontrada no arquivo
     print(soup.div.div.p.text == "Silva")
 
 if __name__ == '__main__':
