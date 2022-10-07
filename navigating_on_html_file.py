@@ -23,8 +23,18 @@ and they lived at the bottom of a well.</p>
 
 def main():
     soup = BeautifulSoup(html_doc, "html.parser")
+
     print(soup.a) # Primeira tag "a" encontrada no arquivo
-    print(soup.div.div.p.text == "Silva")
+    print(soup.div.div.p.text == "Silva") # Indo fundo nas tags do arquivo HTML
+
+    for parent in soup.div.parents: # .parents retorna todos os parentes de uma tag
+        if parent is not None:
+            print(parent.name)
+
+    print(soup.div.parent) # .parent retorna a tag mãe, aquela no qual a tag está contida
+
+    for child in soup.div.children: # Navegando por todas as filhas
+        print(child)
 
 if __name__ == '__main__':
     main()
