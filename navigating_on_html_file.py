@@ -1,45 +1,45 @@
 from bs4 import BeautifulSoup
+import requests
 
-html_doc = """
-<html><head><title>The Dormouse's story</title></head>
-<body>
-<p class="title"><b>The Dormouse's story</b></p>
-
-<p class="story">Once upon a time there were three little sisters; and their names were
-<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
-<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
-<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
-and they lived at the bottom of a well.</p>
-
-<p class="story">...</p>
-
-<div class="container">
-    <p id="nome">Hícaro</p>
-    <div class="inner-container">
-        <p id="nome">Silva</p>
-    </div>
-</div>
-"""
 
 def main():
+    response = requests.get(
+        "https://www.populationpyramid.net/pt/popula%C3%A7%C3%A3o/2022/"
+    )
+
+    if response.status_code != 200:
+        print("Não foi possível obter a página HTML")
+
+    """
+    Esse comando irá criar um objeto da classe BeautifulSoup (isso será explicado em
+    mais detalhes por outros integrantes)
+    """
+    html_doc = response.text
     soup = BeautifulSoup(html_doc, "html.parser")
 
-    print(soup.a) # Primeira tag "a" encontrada no arquivo
-    print(soup.div.div.p.text == "Silva") # Indo fundo nas tags do arquivo HTML
+    """
+    Esse comando abaixo irá buscar a primeira tag <a> dentro do HTML
+    """
+    print(soup.a)
 
-    for parent in soup.div.parents: # .parents retorna todos os parentes de uma tag
-        if parent is not None:
-            print(parent.name)
+    """
+    Esse comando abaixo irá extrair o texto de dentro da primeira tag <a> dentro do HTML
+    """
+    print(soup.a.text)
 
-    print(soup.div.parent) # .parent retorna a tag mãe, aquela no qual a tag está contida
-
-    for child in soup.div.children: # Navegando por todas as filhas
+    """
+    Esse comando irá extrair todas as children da primeira tag <div> que aparecer dentro
+    do HTML.
+    """
+    for child in soup.div.children:
         print(child)
 
-    for div_parent in soup.div.parents: # Navegando por todos os parentes
-        print(div_parent.name)
+    """
+    Esse comando irá extrair todos os parent da primeira tag <div> que aparecer dentro
+    do HTML.
+    """
+    for parent in soup.div.parents:
+        print(parent.name)
 
-    print(soup.a.parent) # Acessando a tag mãe do "a"
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
