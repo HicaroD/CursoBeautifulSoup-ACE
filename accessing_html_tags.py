@@ -28,8 +28,14 @@ print(soup.find_all('a'))
 
 print(soup.find(id = 'menu'))
 
+"""
+Acessando os atributos das tags
+"""
 for link in soup.find_all('a'):
   print(link.get('href'))
   print('-=-=-=-=-=-=-=-=-=-=-')
 
+"""
+Extraindo texto do conteúdo
+"""
 print(soup.get_text())
