@@ -1,2 +1,2 @@
-# CursoBeautifulSoup-ACE
-Códigos usados no curso de "BeautifulSoup" no AraComp
+# Web Scraping com BS4
+Todos os códigos usados no curso de "BeautifulSoup" do AraComp.
