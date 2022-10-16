@@ -11,9 +11,10 @@ def main():
     o headers com User-Agent da Mozilla para simular um usuário real acessando o
     website.
     """
+    headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get(
-        "https://www.populationpyramid.net/pt/popula%C3%A7%C3%A3o/2022/",
-        headers={"User-Agent": "Mozilla/5.0"},
+        "https://en.wikipedia.org/wiki/Beautiful_Soup_(HTML_parser)",
+        headers=headers,
     )
 
     """
