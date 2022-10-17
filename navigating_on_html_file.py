@@ -42,8 +42,8 @@ def main():
     Esse comando irá extrair todos os parent da primeira tag <div> que aparecer dentro
     do HTML.
     """
-    print(soup.div)
-    for parent in soup.div.parents:
+    print(soup.b)
+    for parent in soup.b.parents:
         print(parent.name)
 
 if __name__ == "__main__":
